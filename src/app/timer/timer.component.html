@@ -1,0 +1,5 @@
+<div class="timer">
+  <app-display [time]="timer.countdown$ | async"></app-display>
+  <button (click)="timer.restartCountdown()">Restart</button>
+
+</div>
