@@ -1,9 +1,14 @@
 <div class="timer">
   <app-display [time]="timer.countdown$ | async"></app-display>
   <button (click)="timer.restartCountdown()">Restart</button>
- <div>
-   <input type="text" [(ngModel)]="sin_pipe_async">
- </div>
- {{sin_pipe_async}}
  
-</div>
+
+    <!-- <app-display [time]="sin_pipe_async"></app-display> asi aca no funca, con el pipe si -->
+
+    <!-- El StringInterpolation y ngModel (two data binding) en este caso funcionan bien, solo cuando esta el async pipe sino no. De la otra forma de subscripcion no funcan en este caso-->
+
+    <!-- <input type="text" [(ngModel)]="sin_pipe_async">
+ 
+ {{sin_pipe_async}}
+  -->
+  </div>

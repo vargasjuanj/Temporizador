@@ -8,11 +8,12 @@ export class TimerService {
 
   private countdownTimerRef:any = null;
   private init:number = 0;
-  private countdownSource = new BehaviorSubject<number>(0);
-  private countdownEndSource = new Subject<void>();
-  public countdown$ = this.countdownSource.asObservable();
+  public countdownSource = new BehaviorSubject<number>(0); //en ves de usar un number, usamos este tipo especial de Observable Subject, para almacenar un estado y pedirlo
+  private countdownEndSource = new Subject<void>(); //para emitir el evento al completarse el conteo
+  public countdown$ = this.countdownSource.asObservable(); 
   public countdownEnd$ = this.countdownEndSource.asObservable();
 
+  //
   constructor() { }
 
   destroy():void{
@@ -28,7 +29,7 @@ export class TimerService {
 
     if(this.init >0){
      
-       //this.clearTimeout();
+      // this.clearTimeout();
       this.countdownSource.next(this.init); //Si es mayor a cero convertimos el numero en un stream y al ser subjectBehavior mantiene el estado, lo cargamos con cierto numero inicial
 
        this.doCountdown(); //Enpieza a hacer la cuentra regresiva en base a cierto numero
@@ -59,6 +60,7 @@ export class TimerService {
     }
   }
 
+  //??
   private clearTimeout(){
     if(this.countdownTimerRef){
       clearTimeout(this.countdownTimerRef);
