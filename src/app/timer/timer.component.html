@@ -1,5 +1,9 @@
 <div class="timer">
-  <app-display [time]="timer.countdown$ | async"></app-display>
+  <app-display [time]="timer.countdown"></app-display>
   <button (click)="timer.restartCountdown()">Restart</button>
-
+ <div>
+   <input type="text" [(ngModel)]="timer.countdown">
+ </div>
+ {{timer.countdown}}
+ 
 </div>
